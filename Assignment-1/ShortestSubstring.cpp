@@ -6,9 +6,6 @@
 #include<vector>
 #include <bits/stdc++.h>
 
-
-//edge case if no answer!
-//invert an array search?
 int ShortestSubstring(std::string input, std::string chars){
 
 int ans=input.length()+1;
