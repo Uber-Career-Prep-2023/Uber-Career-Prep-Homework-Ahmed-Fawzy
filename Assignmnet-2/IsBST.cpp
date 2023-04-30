@@ -17,7 +17,7 @@ bool IsBST(const TreeNode *node)
         return true;
 
     if (node->left != nullptr && node->left->data > node->data)
-    { // left node greated than parent
+    { // left node greater than parent
         return false;
     }
 
