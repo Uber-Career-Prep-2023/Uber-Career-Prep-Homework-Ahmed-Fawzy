@@ -1,35 +1,14 @@
 // Doubly Linked List Functions done in 65 minutes
 
+#include "header.h"
 #include <iostream>
-
-struct Node
-{
-
-    int data;
-    Node *next;
-    Node *prev;
-};
-
-// Function declerations
-Node *insertAtFront(Node *head, int val);
-void insertAtBack(Node *head, int val);
-void insertAfter(Node *head, int val, Node *loc);
-Node *deleteFront(Node *head);
-void deleteBack(Node *head);
-Node *deleteNode(Node *head, Node *loc);
-int length(Node *head);
-Node *reverseIterative(Node *head);
-Node *reverseRecursive(Node *head);
-Node *reverseRecursiveHelper(Node *node, Node **head);
-void printList(Node *head);
-void clearList(Node *head);
 
 // creates new Node with data val at front; returns new head
 // time is O(1)
-Node *insertAtFront(Node *head, int val)
+DoublyNode *doublyInsertAtFront(DoublyNode *head, int val)
 {
 
-    Node *newHead = new Node;
+    DoublyNode *newHead = new DoublyNode;
     newHead->data = val;
     newHead->next = nullptr;
     newHead->prev = nullptr;
@@ -47,10 +26,10 @@ Node *insertAtFront(Node *head, int val)
 
 // creates new Node with data val at end
 // time is O(n)
-void insertAtBack(Node *head, int val)
+void doublyInsertAtBack(DoublyNode *head, int val)
 {
 
-    Node *newTail = new Node;
+    DoublyNode *newTail = new DoublyNode;
     newTail->data = val;
     newTail->next = nullptr;
     newTail->prev = nullptr;
@@ -72,13 +51,13 @@ void insertAtBack(Node *head, int val)
 
 // creates new Node with data val after Node loc
 // time is O(1)
-void insertAfter(Node *head, int val, Node *loc)
+void doublyInsertAfter(DoublyNode *head, int val, DoublyNode *loc)
 {
 
     if (loc == nullptr)
         return;
 
-    Node *newNode = new Node;
+    DoublyNode *newNode = new DoublyNode;
     newNode->data = val;
     newNode->next = loc->next;
     newNode->prev = loc;
@@ -91,13 +70,13 @@ void insertAfter(Node *head, int val, Node *loc)
 
 // removes first Node; returns new head
 // time is O(1)
-Node *deleteFront(Node *head)
+DoublyNode *doublyDeleteFront(DoublyNode *head)
 {
 
     if (head == nullptr)
         return nullptr;
 
-    Node *oldHead = head;
+    DoublyNode *oldHead = head;
     head = head->next;
     head->prev = nullptr;
 
@@ -108,7 +87,7 @@ Node *deleteFront(Node *head)
 
 // removes last Node
 // time is O(n)
-void deleteBack(Node *head)
+void doublyDeleteBack(DoublyNode *head)
 {
 
     if (head == nullptr)
@@ -131,18 +110,18 @@ void deleteBack(Node *head)
 
 // deletes Node loc; returns head
 // time is O(1)
-Node *deleteNode(Node *head, Node *loc)
+DoublyNode *doublyDeleteNode(DoublyNode *head, DoublyNode *loc)
 {
 
     if (loc == nullptr || head == nullptr)
         return head;
 
-    Node *previous = loc->prev;
+    DoublyNode *previous = loc->prev;
 
     if (previous == nullptr)
     { // loc == head case
 
-        Node *oldHead = head;
+        DoublyNode *oldHead = head;
         head = head->next;
         head->prev = nullptr;
 
@@ -160,7 +139,7 @@ Node *deleteNode(Node *head, Node *loc)
 
 // returns length of the list
 // time is O(n)
-int length(Node *head)
+int doublyLength(DoublyNode *head)
 {
 
     if (head == nullptr)
@@ -179,7 +158,7 @@ int length(Node *head)
 
 // reverses the linked list iteratively
 // time is O(n)
-Node *reverseIterative(Node *head)
+DoublyNode *doublyReverseIterative(DoublyNode *head)
 {
 
     if (head == nullptr)
@@ -188,7 +167,7 @@ Node *reverseIterative(Node *head)
     while (head->next != nullptr)
     {
 
-        Node *temp = head->next;
+        DoublyNode *temp = head->next;
         head->next = head->prev;
         head->prev = temp;
 
@@ -203,20 +182,20 @@ Node *reverseIterative(Node *head)
 
 // reverses the linked list recursively (Hint: you will need a helper function)
 // time is O(1) + O(n) = O(n)
-Node *reverseRecursive(Node *head)
+DoublyNode *doublyReverseRecursive(DoublyNode *head)
 {
 
-    Node **newHead = new Node *;
-    reverseRecursiveHelper(head, newHead);
+    DoublyNode **newHead = new DoublyNode *;
+    doublyReverseRecursiveHelper(head, newHead);
 
-    Node *newHead2 = *newHead;
+    DoublyNode *newHead2 = *newHead;
     delete newHead;
 
     return newHead2;
 }
 
 // O(n)
-Node *reverseRecursiveHelper(Node *node, Node **head)
+DoublyNode *doublyReverseRecursiveHelper(DoublyNode *node, DoublyNode **head)
 {
 
     if (node == nullptr)
@@ -228,9 +207,9 @@ Node *reverseRecursiveHelper(Node *node, Node **head)
         return node;
     }
 
-    Node *temp = reverseRecursiveHelper(node->next, head);
+    DoublyNode *temp = doublyReverseRecursiveHelper(node->next, head);
 
-    Node *temp2 = temp->next;
+    DoublyNode *temp2 = temp->next;
     temp->next = node;
     temp->prev = temp2;
 
@@ -246,7 +225,7 @@ Node *reverseRecursiveHelper(Node *node, Node **head)
 }
 
 // used for testing
-void printList(Node *head)
+void doublyPrintList(DoublyNode *head)
 {
 
     if (head == nullptr)
@@ -264,7 +243,7 @@ void printList(Node *head)
 }
 
 // used to deallocate memory
-void clearList(Node *head)
+void doublyClearList(DoublyNode *head)
 {
 
     if (head == nullptr)
@@ -273,7 +252,7 @@ void clearList(Node *head)
     while (head != nullptr)
     {
 
-        Node *temp = head;
+        DoublyNode *temp = head;
         head = head->next;
 
         delete temp;
@@ -281,29 +260,29 @@ void clearList(Node *head)
 }
 
 
-//Testing
-int main()
+//Below are some test cases
+void test()
 {
 
-    Node *head = nullptr;
+    DoublyNode *head = nullptr;
 
     for (int i = 1; i < 10; i++)
     {
-        head = insertAtFront(head, i);
+        head = doublyInsertAtFront(head, i);
     }
 
-    insertAtBack(head, 0);
-    insertAfter(head, 11, head);
-    head = deleteFront(head);
-    deleteBack(head);
-    head = deleteNode(head, head->next);
-    head = reverseIterative(head);
-    head = reverseRecursive(head);
+    doublyInsertAtBack(head, 0);
+    doublyInsertAfter(head, 11, head);
+    DoublyNode *head = doublyDeleteFront(head);
+    doublyDeleteBack(head);
+    head = doublyDeleteNode(head, head->next);
+    head = doublyReverseIterative(head);
+    head = doublyReverseRecursive(head);
 
     std::cout << "Expected list is: [ 11, 7, 6, 5, 4, 3, 2, 1 ] " << std::endl
               << "Actual list is:   ";
-    printList(head);
-    std::cout << "Length is: " << length(head);
+    doublyPrintList(head);
+    std::cout << "Length is: " << doublyLength(head);
 
-    clearList(head);
+    doublyClearList(head);
 }

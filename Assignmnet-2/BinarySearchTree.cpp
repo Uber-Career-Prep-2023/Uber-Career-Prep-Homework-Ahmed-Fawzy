@@ -1,37 +1,10 @@
 // time: 120 min
 
+#include "header.h"
 #include <iostream>
 
-struct Node
-{
-    int data;
-    Node *left;  // left data is less than current node data
-    Node *right; // right data is more than current node data
-};
-
-class BinarySearchTree
-{
-
-private:
-    Node *head;
-
-public:
-    BinarySearchTree() { head = nullptr; }
-    int min();              // returns the minimum value in the BST
-    int max();              // returns the maximum value in the BST
-    bool contains(int val); // returns a boolean indicating whether val is present in the BST
-    void insert(int val);   // creates a new Node with data val in the appropriate location, no duplicates!
-
-    Node *deleteNode(Node *node, int val); // deletes the Node with data val and returns root
-    int DeleteSuccessor(Node *node);       // deletes the successor and returns val
-
-    Node *getHead() { return head; }
-    void setHead(Node *n) { head = n; }
-    void clearTree(Node *node);
-};
-
 // time complexity: O(n)
-void BinarySearchTree::clearTree(Node *node)
+void BinarySearchTree::clearTree(TreeNode *node)
 {
 
     if (node == nullptr)
@@ -52,7 +25,7 @@ int BinarySearchTree::min()
     if (head == nullptr)
         throw std::invalid_argument("Tree is empty!");
 
-    Node *node = head;
+    TreeNode *node = head;
 
     while (node->left != nullptr)
     {
@@ -69,7 +42,7 @@ int BinarySearchTree::max()
     if (head == nullptr)
         throw std::invalid_argument("Tree is empty!");
 
-    Node *node = head;
+    TreeNode *node = head;
 
     while (node->right != nullptr)
     {
@@ -86,7 +59,7 @@ bool BinarySearchTree::contains(int val)
     if (head == nullptr)
         return false;
 
-    Node *node = head;
+    TreeNode *node = head;
 
     while (node->data != val)
     {
@@ -114,7 +87,7 @@ void BinarySearchTree::insert(int val)
 
     if (head == nullptr)
     {
-        Node *newNode = new Node;
+        TreeNode *newNode = new TreeNode;
         head = newNode;
 
         newNode->data = val;
@@ -123,7 +96,7 @@ void BinarySearchTree::insert(int val)
         return;
     }
 
-    Node *node = head;
+    TreeNode *node = head;
     bool findSpot = true;
 
     while (findSpot)
@@ -148,7 +121,7 @@ void BinarySearchTree::insert(int val)
         }
     }
 
-    Node *newNode = new Node;
+    TreeNode *newNode = new TreeNode;
     newNode->data = val;
     newNode->left = nullptr;
     newNode->right = nullptr;
@@ -164,7 +137,7 @@ void BinarySearchTree::insert(int val)
 }
 
 // time complexity: O(n)
-Node *BinarySearchTree::deleteNode(Node *node, int val)
+TreeNode *BinarySearchTree::deleteNode(TreeNode *node, int val)
 {
 
     if (node == nullptr)
@@ -187,14 +160,14 @@ Node *BinarySearchTree::deleteNode(Node *node, int val)
 
         else if (node->left != nullptr && node->right == nullptr)
         {
-            Node *temp = node->left;
+            TreeNode *temp = node->left;
             delete node;
             return temp;
         }
 
         else if (node->left == nullptr && node->right != nullptr)
         {
-            Node *temp = node->right;
+            TreeNode *temp = node->right;
             delete node;
             return temp;
         }
@@ -211,10 +184,10 @@ Node *BinarySearchTree::deleteNode(Node *node, int val)
     return node;
 }
 
-int BinarySearchTree::DeleteSuccessor(Node *node)
+int BinarySearchTree::DeleteSuccessor(TreeNode *node)
 { // node is guranteed to have 2 childern
 
-    Node *nextNode = node->right;
+    TreeNode *nextNode = node->right;
 
     while (nextNode != nullptr)
     {
@@ -235,7 +208,9 @@ int BinarySearchTree::DeleteSuccessor(Node *node)
     return 0; // will never occur
 }
 
-int main()
+
+//Below are some test cases
+void test()
 {
 
     // testing

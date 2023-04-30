@@ -1,31 +1,11 @@
 // Linked List Functions done in 90 minutes
 
+#include "header.h"
 #include <iostream>
-
-struct Node
-{
-
-    int data;
-    Node *next;
-};
-
-//Function declerations
-Node *insertAtFront(Node *head, int val);
-void insertAtBack(Node *head, int val);
-void insertAfter(Node *head, int val, Node *loc);
-Node *deleteFront(Node *head);
-void deleteBack(Node *head);
-Node *deleteNode(Node *head, Node *loc);
-int length(Node *head);
-Node *reverseIterative(Node *head);
-Node *reverseRecursive(Node *head);
-Node *reverseRecursiveHelper(Node *node, Node **head);
-void printList(Node *head);
-void clearList(Node *head);
 
 // creates new Node with data val at front; returns new head
 // time is O(1)
-Node* insertAtFront(Node *head, int val)
+Node *insertAtFront(Node *head, int val)
 {
 
     Node *newHead = new Node;
@@ -50,7 +30,8 @@ void insertAtBack(Node *head, int val)
     newTail->data = val;
     newTail->next = nullptr;
 
-    if (head == nullptr){
+    if (head == nullptr)
+    {
         delete newTail;
         return;
     }
@@ -98,7 +79,8 @@ Node *deleteFront(Node *head)
 // time is O(n)
 void deleteBack(Node *head)
 {
-    if(head==nullptr) return;
+    if (head == nullptr)
+        return;
 
     if (head->next == nullptr)
     {
@@ -263,7 +245,8 @@ void clearList(Node *head)
     }
 }
 
-int main()
+// Below are some test cases
+void test()
 {
 
     Node *head = nullptr;
