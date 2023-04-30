@@ -1,3 +1,5 @@
+//Header file in order to use the linkedlist and bst functions to solve the problems given.
+
 #ifndef HEADER_H 
 #define HEADER_H
 
