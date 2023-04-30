@@ -1,10 +1,11 @@
 /*
 n is number of nodes
+h is height of tree [note if tree is balanced height is O(logn) ]
 
 Time spent:       20 minutes
 Technique:        Generic Depth-first traversal
 Time complexity:  O(n)
-Space complexity: O(1)
+Space complexity: O(h) to include the recursive stack
 */
 
 #include "header.h"
