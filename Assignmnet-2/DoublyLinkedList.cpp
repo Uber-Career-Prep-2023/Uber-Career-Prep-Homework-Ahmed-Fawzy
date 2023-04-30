@@ -259,8 +259,7 @@ void doublyClearList(DoublyNode *head)
     }
 }
 
-
-//Below are some test cases
+// Below are some test cases
 void test()
 {
 

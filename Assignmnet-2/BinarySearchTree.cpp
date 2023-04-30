@@ -208,8 +208,7 @@ int BinarySearchTree::DeleteSuccessor(TreeNode *node)
     return 0; // will never occur
 }
 
-
-//Below are some test cases
+// Below are some test cases
 void test()
 {
 

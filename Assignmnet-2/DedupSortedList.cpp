@@ -10,19 +10,21 @@ Space complexity: O(1)
 #include "header.h"
 #include <iostream>
 
-void DedupSortedList(Node* node)
+void DedupSortedList(Node *node)
 {
 
     if (node == nullptr)
         return;
 
-    Node* nextNode = node->next;
+    Node *nextNode = node->next;
 
-    while(nextNode != nullptr){
+    while (nextNode != nullptr)
+    {
 
-        if (nextNode->data == node->data){
+        if (nextNode->data == node->data)
+        {
 
-            Node* temp = nextNode;
+            Node *temp = nextNode;
             node->next = nextNode->next;
 
             delete temp;
@@ -30,21 +32,19 @@ void DedupSortedList(Node* node)
             nextNode = node->next;
         }
 
-       else{ 
-        node = node->next;
-        nextNode = nextNode->next;
-       }
-
+        else
+        {
+            node = node->next;
+            nextNode = nextNode->next;
+        }
     }
-
-  
 }
 
 int main()
 {
-    Node* head = new Node;
+    Node *head = new Node;
     head->data = 1;
-    head->next =nullptr;
+    head->next = nullptr;
 
     insertAtBack(head, 2);
     insertAtBack(head, 2);
@@ -55,7 +55,7 @@ int main()
     insertAtBack(head, 10);
     insertAtBack(head, 10);
 
-    Node* head2 = new Node;
+    Node *head2 = new Node;
     head2->data = 8;
     head2->next = nullptr;
 
@@ -63,28 +63,21 @@ int main()
     insertAtBack(head2, 8);
     insertAtBack(head2, 8);
 
-
-
-    std::cout<<"Original List: ";
+    std::cout << "Original List: ";
     printList(head);
 
     DedupSortedList(head);
-    std::cout<<"List after duplicates removed: ";
+    std::cout << "List after duplicates removed: ";
     printList(head);
-    std::cout<<std::endl;
+    std::cout << std::endl;
 
-
-    std::cout<<"Original List: ";
+    std::cout << "Original List: ";
     printList(head2);
-
 
     DedupSortedList(head2);
-    std::cout<<"List after duplicates removed: ";
+    std::cout << "List after duplicates removed: ";
     printList(head2);
-
-
 
     clearList(head);
     clearList(head2);
-
 }
