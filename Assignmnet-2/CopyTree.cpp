@@ -1,17 +1,17 @@
 /*
-40 minutes.
-
 n is number of nodes
 
-time complexity: O(n)
-space complexity: O(n)
+Time spent:       40 minutes
+Technique:        Generic Depth-first traversal
+Time complexity:  O(n)
+Space complexity: O(n)
 */
 
 #include "header.h"
 #include <iostream>
 
 // function decleration
-void CopyTreeHealper(TreeNode *copyNode, const TreeNode *originalNode);
+void CopyTreeHelper(TreeNode *copyNode, const TreeNode *originalNode);
 TreeNode *CopyTree(const TreeNode *node);
 
 TreeNode *CopyTree(const TreeNode *node)
@@ -21,12 +21,12 @@ TreeNode *CopyTree(const TreeNode *node)
         return nullptr;
 
     TreeNode *newNode = new TreeNode;
-    CopyTreeHealper(newNode, node);
+    CopyTreeHelper(newNode, node);
 
     return newNode;
 }
 
-void CopyTreeHealper(TreeNode *copyNode, const TreeNode *originalNode)
+void CopyTreeHelper(TreeNode *copyNode, const TreeNode *originalNode)
 {
 
     copyNode->data = originalNode->data;
@@ -37,14 +37,14 @@ void CopyTreeHealper(TreeNode *copyNode, const TreeNode *originalNode)
     {
 
         copyNode->left = new TreeNode;
-        CopyTreeHealper(copyNode->left, originalNode->left);
+        CopyTreeHelper(copyNode->left, originalNode->left);
     }
 
     if (originalNode->right != nullptr)
     {
 
         copyNode->right = new TreeNode;
-        CopyTreeHealper(copyNode->right, originalNode->right);
+        CopyTreeHelper(copyNode->right, originalNode->right);
     }
 }
 
