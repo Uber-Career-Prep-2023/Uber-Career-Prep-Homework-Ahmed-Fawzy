@@ -272,7 +272,7 @@ void test()
 
     doublyInsertAtBack(head, 0);
     doublyInsertAfter(head, 11, head);
-    DoublyNode *head = doublyDeleteFront(head);
+    head = doublyDeleteFront(head);
     doublyDeleteBack(head);
     head = doublyDeleteNode(head, head->next);
     head = doublyReverseIterative(head);
