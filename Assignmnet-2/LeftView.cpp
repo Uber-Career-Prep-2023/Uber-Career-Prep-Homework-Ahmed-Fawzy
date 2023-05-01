@@ -3,7 +3,7 @@ n is number of nodes
 h is height of tree [note if tree is balanced height is O(logn) ]
 
 Time spent:       40 minutes
-Technique:        Generic Depth-first traversal
+Technique:        Pre-order traversal while keeping track of height.
 Time complexity:  O(n)
 Space complexity: O(h)
 
