@@ -16,7 +16,7 @@ Explaination: simple preoder tree traversal while keeping track of the node heig
 #include <vector>
 
 // function declerations
-void LeftViewHelper(const TreeNode *node, std::vector<std::vector<int>> &arr, int level);
+void LeftViewHelper(const TreeNode *node, std::vector<std::vector<int>> *arr, int level);
 std::vector<int> LeftView(const TreeNode *root);
 
 std::vector<int> LeftView(const TreeNode *root)
@@ -28,7 +28,7 @@ std::vector<int> LeftView(const TreeNode *root)
     if (root == nullptr)
         return leftArr;
 
-    LeftViewHelper(root, arr, 0); // root height starts at 0
+    LeftViewHelper(root, &arr, 0); // root height starts at 0
 
     for (int i = 0; i < arr.size(); i++)
     {
@@ -38,15 +38,15 @@ std::vector<int> LeftView(const TreeNode *root)
     return leftArr;
 }
 
-void LeftViewHelper(const TreeNode *node, std::vector<std::vector<int>> &arr, int level)
+void LeftViewHelper(const TreeNode *node, std::vector<std::vector<int>> *arr, int level)
 {
 
     if (node == nullptr)
         return;
 
-    if (arr.size() < level + 1)
+    if ((*arr).size() < level + 1)
     {
-        arr.push_back(std::vector<int>{node->data});
+        (*arr).push_back(std::vector<int>{node->data});
     }
 
     LeftViewHelper(node->left, arr, level + 1);
