@@ -33,7 +33,7 @@ std::map<int, std::vector<int>> adjacencySet(std::vector<std::pair<int, int>> ed
     return adjacencyMap;
 }
 
-// Runtime: O(V)
+// Runtime: O(V+E)
 // Space: O(V)
 bool bfs(int target, std::map<int, std::vector<int>> graph)
 {
@@ -93,7 +93,7 @@ bool bfsHelper(int node, int target, std::map<int, std::vector<int>> &graph, std
     return false;
 }
 
-// Runtime: O(V)
+// Runtime: O(V+E)
 // Space: O(V)
 bool dfs(int target, std::map<int, std::vector<int>> graph)
 {
@@ -143,7 +143,7 @@ bool dfsHelper(int node, int target, std::map<int, std::vector<int>> &graph, std
     return false;
 }
 
-// Runtime: O(V)
+// Runtime: O(V+E)
 // Space: O(V)
 std::vector<int> topologicalSort(std::map<int, std::vector<int>> graph)
 {
