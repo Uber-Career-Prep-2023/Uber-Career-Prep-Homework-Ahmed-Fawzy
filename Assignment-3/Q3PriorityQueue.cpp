@@ -1,4 +1,4 @@
-// Done in 65 minutes
+// Done in 35 minutes
 
 #include <iostream>
 #include <vector>
