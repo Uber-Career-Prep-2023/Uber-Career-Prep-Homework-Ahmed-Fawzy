@@ -40,7 +40,7 @@ void Heap::remove()
 
         if ((2 * pos + 2) < arr.size() - 1)
         {
-            rightChild = arr[2 * pos + 2];
+            rightChild = 2 * pos + 2;
         }
 
         smallest = std::min(arr[rightChild], arr[leftChild]);
