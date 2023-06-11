@@ -64,8 +64,10 @@ int main()
 {
 
     // TEST 1: Checking if reverse works with only 3 words with letters only
+    // Expected: "Prep Career Uber"
     std::cout << "Reverse of 'Uber Career Prep' is: " << ReverseWords("Uber Career Prep") << "\n";
 
     // TEST 2: Checking if reverse works with multiple words including other characters.
+    // Exptected: "York. New Brooklyn, in lives Emma"
     std::cout << "Reverse of 'Emma lives in Brooklyn, New York.' is: " << ReverseWords("Emma lives in Brooklyn, New York.") << "\n";
 }
