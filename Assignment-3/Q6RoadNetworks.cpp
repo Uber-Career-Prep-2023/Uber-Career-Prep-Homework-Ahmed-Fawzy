@@ -37,9 +37,7 @@ void dfs(int cityIndex, std::map<std::string, int> &cityToIndex, std::map<std::s
     {
 
         int index = cityToIndex[adjacency[city][i]];
-        if (city == "Homer")
-        {
-        }
+
         if (cities[index] != "*")
         {
 
