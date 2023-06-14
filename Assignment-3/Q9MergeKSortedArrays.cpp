@@ -1,5 +1,6 @@
 /*
 n is total number of elements
+k is the number of arrays
 
 Time spent:       35 minutes
 Technique:        Min priority Queue (put first element of each array into pq, pop, push first element in the array that the popped value came from..)
